@@ -28,12 +28,13 @@ def filtro_geometrico(img_path, filter_size):
     num_rows, num_cols = img.shape[:2]
     dim = img.shape[2] if (len(img.shape) == 3) else 1
 
+    # Extendendo a borda da imagem utilizando a técnica "wraparound".
     img_ext = np.pad(img, (filter_size_ext, filter_size_ext), mode='wrap')
-
     # Essa variável armazenará a imagem resultante.
     img_filtered = np.zeros((num_rows, num_cols, dim))
-
+    # O coeficiente da raíz da média geométrica
     exp_root = 1 / (filter_size ** 2)
+
     # Para imagens coloridas, temos de calcular a suavização para os 3 níveis RGB, senão a trasparência...
     if len(img.shape) >= 3:
         for i in range(dim):
