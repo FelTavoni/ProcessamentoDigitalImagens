@@ -2,52 +2,65 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
-def filtro_geometrico(path):
+def renormalize(img):
+    """
+    Função de normalização de Imagens
+    """
+    img_norm = img - np.min(img)
+    img_norm = img_norm/np.max(img_norm)
+    img_norm = 255*img_norm
+    img_norm = img_norm.astype(np.uint8)
+    
+    # O mesmo que acima em um único comando
+    # img_norm = (255*(img-np.min(img))/(np.max(img)-np.min(img))).astype(np.uint8)
+    
+    return img_norm
+
+def filtro_geometrico(img_path, filter_size):
     """
     Desc.: Implemeta o filtro de média geométrica.
-    I: Uma imagem path
+    I: O caminho de uma imagem(img_path), o tamanho do filtro(filter_size)
     O: A imagem X resultante da aplicação do filtro.
     """
-    print("Qual a dimensão do filtro? (1 valor apenas)")
-    tamanho_filtro = int(input())
-    tamanho_filtro_ext = tamanho_filtro//2
+    filter_size_ext = filter_size // 2
 
-    img = plt.imread(path)
-    grade = img.shape                                             
-    linhas = grade[0]                                             
-    colunas = grade[1]                                            
-    dimensoes = grade[2] if (len(grade) == 3) else 1              
+    img = plt.imread(img_path)
+    num_rows, num_cols = img.shape[:2]
+    dim = img.shape[2] if (len(img.shape) == 3) else 1
 
-    img_ext = np.pad(img, (tamanho_filtro_ext, tamanho_filtro_ext), mode='wrap')
+    img_ext = np.pad(img, (filter_size_ext, filter_size_ext), mode='wrap')
 
     # Essa variável armazenará a imagem resultante.
-    img_filtrada = np.zeros((linhas, colunas, dimensoes))
+    img_filtered = np.zeros((num_rows, num_cols, dim))
 
-    raiz = 1 / (tamanho_filtro * tamanho_filtro)
+    exp_root = 1 / (filter_size ** 2)
     # Para imagens coloridas, temos de calcular a suavização para os 3 níveis RGB, senão a trasparência...
-    if len(grade) >= 3:
-        for i in range(dimensoes):
-            for lin in range(linhas):
-                for col in range(colunas):
-                    mult = np.product(img_ext[lin:lin + tamanho_filtro,
-                                      col:col + tamanho_filtro, i],
+    if len(img.shape) >= 3:
+        for i in range(dim):
+            for row in range(num_rows):
+                for col in range(num_cols):
+                    mult = np.product(img_ext[row:row + filter_size,
+                                      col:col + filter_size, i],
                                       dtype=np.longdouble)
-                    img_filtrada[lin, col, i] = mult**raiz
+                    img_filtered[row, col, i] = mult**exp_root
     # Já em caso de imagens monocromáticas, uma única dimensão deve ser processada.
     else:
         # Processo idêntico ao anterior, no entanto, adaptado a apenas uma dimensão.
-        for i in range(dimensoes):
-            for lin in range(linhas):
-                for col in range(colunas):
-                    mult = np.product(img_ext[lin:lin+tamanho_filtro, col:col+tamanho_filtro], dtype=np.longdouble)
-                    img_filtrada[lin, col] = mult**raiz
+        for i in range(dim):
+            for row in range(num_rows):
+                for col in range(num_cols):
+                    mult = np.product(img_ext[row:row + filter_size,
+                                      col:col + filter_size],
+                                      dtype=np.longdouble)
+                    img_filtered[row, col] = mult**exp_root
 
-    plt.imshow(img_filtrada, vmin=0, vmax=255)
+    plt.imshow(renormalize(img_filtered), vmin=0, vmax=255)
     plt.title('Filtrada')
     plt.savefig("Result.png")
 
-    return img_filtrada
+    return img_filtered
 
 
 if __name__ == "__main__":
-    img = filtro_geometrico(sys.argv[1])
+    filter_size = 5
+    img = filtro_geometrico(sys.argv[1], filter_size)
