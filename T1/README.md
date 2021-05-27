@@ -14,7 +14,7 @@ O trabalho 1 da disciplina de *Processamento Digital de Imagens* consiste em imp
 
 O filtro de média geométrica consiste em implementar um filtro conforme a função abaixo.
 
-<img src="..\img\MediaGeom.png" alt="Média Geométrica" width="40%" style="display: block; margin: auto;">
+<img src=".\images\MediaGeom.png" alt="Média Geométrica" width="40%" style="display: block; margin: auto;">
 
 Com isso, dado o tamanho de um filtro, a média geométrica será correspondente ao valor da multiplicação dos vizinhos, conforme o tamanho do filtro,  extraindo por fim a n-ésima raíz do conjunto.
 
