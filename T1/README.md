@@ -32,6 +32,17 @@ A execução do filtro geométrico deve seguir a seguinte forma:
 
 Executado o código, será então retornada uma imagem que será armazenada no diretório em que o programa se encontra, com uma extensão *.png*.
 
+Também é possível executar o código a partir da imagem de docker descrita no
+Dockerfile no diretório da seguinte maneira:
+
+```
+docker run -d --name <nome_do_container> -p 8888:8888 -v $PWD:/home/jovyan/work pdiwk
+```
+
+Lembrando que para acessar a o servidor na web é necessário saber o token de
+autenticação para tanto é necessário entrar no container com `docker exec -it
+<nome_do_container> bash` e executar `jupyter lab list`.
+
 ### Executando os Testes
 
 --
