@@ -14,10 +14,10 @@ def filtro_geometrico(img_path, filter_size):
     num_rows, num_cols = img.shape[:2]
     dim = img.shape[2] if (len(img.shape) == 3) else 1
 
-    # Extendendo a borda da imagem utilizando a técnica "wraparound", além de converte-la para "float".
-    img_ext = np.pad(img.astype('float64'), (filter_size_ext, filter_size_ext), mode='wrap')
+    # Extendendo a borda da imagem utilizando a técnica "wraparound".
+    img_ext = np.pad(img, (filter_size_ext, filter_size_ext), mode='wrap')
 
-    # Essa variável armazenará a imagem resultante.
+    # Essa variável armazenará a imagem resultante. Não deve ser float64 (padrão), mas sim uint8...
     img_filtered = np.zeros((num_rows, num_cols, dim), dtype=np.uint8)
 
     # O coeficiente da raíz da média geométrica
