@@ -44,6 +44,10 @@ def filtro_geometrico(img_path, filter_size):
                                       col:col + filter_size, i],
                                       dtype=np.longdouble)
                     img_filtered[row, col, i] = mult**exp_root
+
+        # É necessário renormalizar a imagem, visto que alguns pixeis, devido a operação de raíz, são agora de ponto flutuante.
+        plt.imshow(renormalize(img_filtered), vmin=0, vmax=255)
+
     # Já em caso de imagens monocromáticas, uma única dimensão deve ser processada.
     else:
         # Processo idêntico ao anterior, no entanto, adaptado a apenas uma dimensão.
@@ -55,8 +59,11 @@ def filtro_geometrico(img_path, filter_size):
                                       dtype=np.longdouble)
                     img_filtered[row, col] = mult**exp_root
 
-    plt.imshow(renormalize(img_filtered), vmin=0, vmax=255)
+        # Imagens monocromaticas devem ser mapeadas para a escala cinza, durante a chamada imshow.
+        plt.imshow(renormalize(img_filtered), cmap='gray', vmin=0, vmax=255)
+    
     plt.title('Filtrada')
+    plt.axis('off')
     plt.savefig("Result.png")
 
     return img_filtered
