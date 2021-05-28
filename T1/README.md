@@ -2,27 +2,31 @@
 
 O trabalho 1 da disciplina de *Processamento Digital de Imagens* consiste em implementar os filtros *média geométrica* e de *mediana* em imagens.
 
-**Remover**
+**- Remover -**
 
 - Explicação do método implementado;
 - Motivação do uso do método (porque usar? Em que situações ele é importante?);
 - Explicação da parte mais importante do código.
 
-**Remover**
+**- Remover -**
+
+Os **filtros não-lineares** se diferem de **filtros lineares** pois têm como característica principal o uso de alguma função não-linear ao processar as imagens, ou seja, qualquer filtro que não se apresente como uma relação ponderada dos pixels. Por isso, acabam sendo mais custosos computacionalmente.
+
+Filtros não-lineares são comumente utilizados para alterar uma imagem sem diminuir sua resolução, intencionados a minimizar/realçar ruídos, além de suavizar/realçar bordas de objetos.
 
 ## Filtro geométrico
 
 O filtro de média geométrica consiste em implementar um filtro conforme a função abaixo.
 
-<img src=".\images\MediaGeom.png" alt="Média Geométrica" width="40%" style="display: block; margin: auto;">
+<img src=".\images\MediaGeom.png" alt="Média Geométrica" width="45%" style="display: block; margin: auto;">
 
-Com isso, dado o tamanho de um filtro, a média geométrica será correspondente ao valor da multiplicação dos vizinhos, conforme o tamanho do filtro,  extraindo por fim a n-ésima raíz do conjunto.
+A partir dele, dado o tamanho de um filtro, a média geométrica será correspondente ao valor da multiplicação dos vizinhos, conforme definido pelo filtro, extraindo por fim a n-ésima raíz do conjunto. 
 
-## Começando
+O filtro de média geométrica obtém uma suavização próxima à aplicação do filtro de média aritmética, mas tende a perder menos detalhes da imagem no processo.
 
-### Pré-requisitos
+## Filtro mediana
 
---
+## Execução
 
 ### Como executar
 
@@ -52,6 +56,10 @@ autenticação para tanto é necessário entrar no container com `docker exec -i
 - [Python v3.9.5](https://www.python.org/)
     - [Numpy v1.20.0](https://numpy.org/)
     - [Matplotlib v3.4.2](https://matplotlib.org/)
+
+### Referências
+
+- Digital Image Processing, 4th Edition - Rafael C. Gonzales, Richard E. Woods.
 
 ## Autores
 
