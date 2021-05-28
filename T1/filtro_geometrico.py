@@ -2,20 +2,6 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
-def renormalize(img):
-    """
-    Função de normalização de Imagens
-    """
-    img_norm = img - np.min(img)
-    img_norm = img_norm/np.max(img_norm)
-    img_norm = 255*img_norm
-    img_norm = img_norm.astype(np.uint8)
-    
-    # O mesmo que acima em um único comando
-    # img_norm = (255*(img-np.min(img))/(np.max(img)-np.min(img))).astype(np.uint8)
-    
-    return img_norm
-
 def filtro_geometrico(img_path, filter_size):
     """
     Desc.: Implemeta o filtro de média geométrica.
@@ -28,10 +14,12 @@ def filtro_geometrico(img_path, filter_size):
     num_rows, num_cols = img.shape[:2]
     dim = img.shape[2] if (len(img.shape) == 3) else 1
 
-    # Extendendo a borda da imagem utilizando a técnica "wraparound".
-    img_ext = np.pad(img, (filter_size_ext, filter_size_ext), mode='wrap')
+    # Extendendo a borda da imagem utilizando a técnica "wraparound", além de converte-la para "float".
+    img_ext = np.pad(img.astype('float64'), (filter_size_ext, filter_size_ext), mode='wrap')
+
     # Essa variável armazenará a imagem resultante.
-    img_filtered = np.zeros((num_rows, num_cols, dim))
+    img_filtered = np.zeros((num_rows, num_cols, dim), dtype=np.uint8)
+
     # O coeficiente da raíz da média geométrica
     exp_root = 1 / (filter_size ** 2)
 
@@ -43,28 +31,28 @@ def filtro_geometrico(img_path, filter_size):
                     mult = np.product(img_ext[row:row + filter_size,
                                       col:col + filter_size, i],
                                       dtype=np.longdouble)
-                    img_filtered[row, col, i] = mult**exp_root
+                    img_filtered[row, col, i] = int(mult**exp_root)
 
-        # É necessário renormalizar a imagem, visto que alguns pixeis, devido a operação de raíz, são agora de ponto flutuante.
-        plt.imshow(renormalize(img_filtered), vmin=0, vmax=255)
+        # Exibindo imagem resultante.
+        plt.imshow(img_filtered, vmin=0, vmax=255)
 
     # Já em caso de imagens monocromáticas, uma única dimensão deve ser processada.
     else:
-        # Processo idêntico ao anterior, no entanto, adaptado a apenas uma dimensão.
+        # Processo idêntico ao anterior, no entanto, adaptado para apenas uma dimensão.
         for i in range(dim):
             for row in range(num_rows):
                 for col in range(num_cols):
                     mult = np.product(img_ext[row:row + filter_size,
                                       col:col + filter_size],
                                       dtype=np.longdouble)
-                    img_filtered[row, col] = mult**exp_root
+                    img_filtered[row, col] = int(mult**exp_root)
 
         # Imagens monocromaticas devem ser mapeadas para a escala cinza, durante a chamada imshow.
-        plt.imshow(renormalize(img_filtered), cmap='gray', vmin=0, vmax=255)
+        plt.imshow(img_filtered, cmap='gray', vmin=0, vmax=255)
     
     plt.title('Filtrada')
     plt.axis('off')
-    plt.savefig("Result.png")
+    plt.savefig("Result.tiff")
 
     return img_filtered
 
