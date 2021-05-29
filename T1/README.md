@@ -26,6 +26,12 @@ O filtro de média geométrica obtém uma suavização próxima à aplicação d
 
 ## Filtro mediana
 
+O filtro da mediana, por sua vez, troca o valor do pixel pelo valor médio (mediana) de intensidade presente nos pixes da vizinhança, definido pelo filtro. Pode ser definida como:
+
+<img src=".\images\Mediana.png" alt="Média Geométrica" width="45%" style="display: block; margin: auto;">
+
+Os filtros de mediana são populares pois, para certos tipos de ruídos, eles providenciam uma capacidade excelente para a redução de ruídos, com menos "embaçamento" quando comparados a filtros lineares de tamanhos equivalentes. São bem efetivos na presença de ruídos de impulso bipolar e unipolar.
+
 ## Execução
 
 ### Como executar
