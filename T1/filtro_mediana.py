@@ -20,9 +20,6 @@ def filtro_mediana(img_path, filter_size):
     # Essa variável armazenará a imagem resultante. Não deve ser float64 (padrão), mas sim uint8...
     img_filtered = np.zeros((num_rows, num_cols, dim), dtype=np.uint8)
 
-    # O coeficiente da raíz da média geométrica
-    exp_root = 1 / (filter_size ** 2)
-
     # Para imagens coloridas, temos de calcular a suavização para os 3 níveis RGB, senão a trasparência...
     if len(img.shape) >= 3:
         for i in range(dim):
@@ -48,7 +45,7 @@ def filtro_mediana(img_path, filter_size):
     
     plt.title('Filtrada')
     plt.axis('off')
-    plt.savefig("Result2.tiff")
+    plt.show()
 
     return img_filtered
 

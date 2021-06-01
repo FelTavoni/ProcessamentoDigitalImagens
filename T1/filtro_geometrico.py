@@ -52,7 +52,7 @@ def filtro_geometrico(img_path, filter_size):
     
     plt.title('Filtrada')
     plt.axis('off')
-    plt.savefig("Result.tiff")
+    plt.show()
 
     return img_filtered
 
