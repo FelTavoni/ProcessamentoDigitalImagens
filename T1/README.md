@@ -34,7 +34,7 @@ Enquanto a do filtro de mediana segue o seguinte:
 
 `python filtro_mediana.py <caminho-da-imagem>`
 
-Executado o código, será então retornada uma imagem que será armazenada no diretório em que o programa se encontra, com uma extensão *.png*.
+Executado o código, será então exibida uma imagem resultante.
 
 - Via Dockerfile
 
@@ -55,11 +55,7 @@ Também é possível rodas os scripts python pelo notebook python. Basta realiza
 
 `jupyter notebook`
 
-A seguir, adentre a pasta em que o arquivo `.ipynb` e execute as células do notebook.
-
-### Executando os Testes
-
---
+A seguir, adentre a pasta em que o arquivo `Filtros Não-Lineares.ipynb` está localizado e execute as células do notebook.
 
 ### Ferramentas Utilizadas
 
