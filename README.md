@@ -6,7 +6,8 @@ Seja bem vindo! Repositório referente à disciplina de Processamento Digital de
 
 ```
 .
-├── T1              -- Trabalho 1
+├── T1              -- Projeto 1
+├── T2              -- Projeto 2
 └── Readme.md
 ```
 
