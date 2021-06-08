@@ -1,6 +1,6 @@
 # Trabalho 2 - Localização de objeto com variação de iluminação (Em desenvolvimento)
 
-O trabalho 2 da disciplina de *Processamento Digital de Imagens* consiste em implementar um filtro capaz de localizar um objeto variando a luminosidade da imagem.
+O trabalho 2 da disciplina de *Processamento Digital de Imagens* consiste em implementar um filtro capaz de localizar um objeto com iluminação diferente da imagem.
 
 ### Ferramentas Utilizadas
 
