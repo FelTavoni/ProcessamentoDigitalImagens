@@ -26,16 +26,16 @@ def search_object(img_path, obj_path, obj_ilum):
 
 	"""
 	É necessário que seja especificado se o objeto está mais escuro/claro que a imagem. Isso porque pode acontecer de,
-		caso teste todos os valores gamas, escurecer a imagem demais pode causar de ela coincidir com algum elemento
-		mais escuro que a imagem, o que não é o desejado. Assim, se desejamos clarificar a imagem, utilizamos gamas
+		caso teste todos os valores gamas, escurecer a imagem demais, podendo coincidir com algum elemento mais 
+		escuro que a imagem, o que não é o desejado. Assim, se desejamos clarificar a imagem, utilizamos gamas
 		maiores que 1, enquanto para escurecer, utilizamos gamas menores que 1.
 	"""
 	global_pos = (0,0)
 	global_min = np.Inf
 	if obj_ilum == "claro":
-		gamma_values = np.linspace(1,2,11)
+		gamma_values = np.linspace(1,5.0,14)
 	elif obj_ilum == "escuro":
-		gamma_values = np.linspace(0,1,11)
+		gamma_values = np.linspace(0,1,14)
 	else:
 		print("Não disponível...")
 		exit()
@@ -48,6 +48,9 @@ def search_object(img_path, obj_path, obj_ilum):
 	print(gamma_values)
 	for gamma in gamma_values:
 		gamma_obj = power_law_tranformation(obj, gamma)
+		# plt.figure(figsize=[1,1])
+		# plt.imshow(gamma_obj, 'gray')
+		# plt.show()
 		diff = square_correlation(img, gamma_obj)
 		min, pos = find_minimum(diff)
 		if min < global_min:
