@@ -4,10 +4,7 @@ O trabalho 2 da disciplina de *Processamento Digital de Imagens* consiste em imp
 
 # Localização de objeto com variação de iluminação.
 
-<table><tr>
-<td> <img src="images/MahomesPassPng.png" alt="Mahomes Pass" style="width: 250px;"> </td>
-<td> <img src="images/ObjLocated.png" alt="Mahomes Pass Located" style="width: 250px;"> </td>
-</tr></table>
+<img src="images/MahomesPassPng.png" alt="Mahomes Pass" style="width: 250px;"><img src="images/ObjLocated.png" alt="Mahomes Pass Located" style="width: 250px;">
 
 Em processamento de imagens, é possível detectar objetos em uma imagem por meio de uma função que calcula as diferenças quadráticas de cada pixel presente na imagem. Isso pode ser expresso por:
 
