@@ -5,13 +5,13 @@ O trabalho 2 da disciplina de *Processamento Digital de Imagens* consiste em imp
 # Localização de objeto com variação de iluminação.
 
 <table><tr>
-<td> <img src="files/images/MahomesPassPng.png" alt="Mahomes Pass" style="width: 250px;"> </td>
-<td> <img src="files/images/ObjLocated.png" alt="Mahomes Pass Located" style="width: 250px;"> </td>
+<td> <img src="images/MahomesPassPng.png" alt="Mahomes Pass" style="width: 250px;"> </td>
+<td> <img src="images/ObjLocated.png" alt="Mahomes Pass Located" style="width: 250px;"> </td>
 </tr></table>
 
 Em processamento de imagens, é possível detectar objetos em uma imagem por meio de uma função que calcula as diferenças quadráticas de cada pixel presente na imagem. Isso pode ser expresso por:
 
-<img src="files/images/DiferencasQuadraticas.png" alt="Diferença Quadrática" style="width: 250px;">
+<img src="images/DiferencasQuadraticas.png" alt="Diferença Quadrática" style="width: 250px;">
 
 Dito isso, é possível que a iluminosidade do objeto a ser buscado na imagem esteja com uma iluminação diferente do que a da imagem. Assim, devem ser aplicadas transformações que tentam aproximar as iluminosidades, permitindo que o objeto seja então localizado.
 
