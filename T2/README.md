@@ -1,6 +1,22 @@
-# Trabalho 2 - Localização de objeto com variação de iluminação (Em desenvolvimento)
+# Trabalho 2 - Localização de objeto com variação de iluminação
 
 O trabalho 2 da disciplina de *Processamento Digital de Imagens* consiste em implementar um filtro capaz de localizar um objeto com iluminação diferente da imagem.
+
+# Localização de objeto com variação de iluminação.
+
+<table><tr>
+<td> <img src="files/images/MahomesPassPng.png" alt="Mahomes Pass" style="width: 250px;"> </td>
+<td> <img src="files/images/ObjLocated.png" alt="Mahomes Pass Located" style="width: 250px;"> </td>
+</tr></table>
+
+Em processamento de imagens, é possível detectar objetos em uma imagem por meio de uma função que calcula as diferenças quadráticas de cada pixel presente na imagem. Isso pode ser expresso por:
+
+<img src="files/images/DiferencasQuadraticas.png" alt="Diferença Quadrática" style="width: 250px;">
+
+Dito isso, é possível que a iluminosidade do objeto a ser buscado na imagem esteja com uma iluminação diferente do que a da imagem. Assim, devem ser aplicadas transformações que tentam aproximar as iluminosidades, permitindo que o objeto seja então localizado.
+
+A seguir, desenvolvemos um algoritmo capaz de realizar tal reconhecimento.
+
 
 ## Como executar
 
@@ -11,6 +27,14 @@ A execução da localização de objetos deve seguir a seguinte forma:
 `python search_object.py <caminho-da-imagem> <caminho-do-objeto> <claro | escuro>`
 
 A tag claro ou escuro ajuda a obter uma melhor resposta, visto que pode haver confusão caso se escureça/clarifique demais a imagem.
+
+- Via Jupyter Notebook
+
+Também é possível rodas os scripts python pelo notebook python. Basta realizar o download da pasta e então, em linha de comando executar:
+
+`jupyter notebook`
+
+A seguir, adentre a pasta em que o arquivo `Localização de objeto com variação.ipynb` está localizado e execute as células do notebook.
 
 ### Ferramentas Utilizadas
 

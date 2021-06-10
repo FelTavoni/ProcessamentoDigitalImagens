@@ -35,7 +35,9 @@ def search_object(img_path, obj_path, obj_ilum):
 	if obj_ilum == "claro":
 		gamma_values = np.linspace(1,5.0,14)
 	elif obj_ilum == "escuro":
-		gamma_values = np.linspace(0,1,14)
+		gamma_values = np.linspace(0.01,1,14)
+	elif obj_ilum == "ambos":
+		gamma_values = np.linspace(0.01,5.0,50)
 	else:
 		print("Não disponível...")
 		exit()
