@@ -2,8 +2,6 @@
 
 O trabalho 2 da disciplina de *Processamento Digital de Imagens* consiste em implementar um filtro capaz de localizar um objeto com iluminação diferente da imagem.
 
-# Localização de objeto com variação de iluminação.
-
 <p align="middle">
     <img src="images/MahomesPassPng.png" alt="Mahomes Pass" width="320">
     <img src="images/ObjLocated.png" alt="Mahomes Pass Located" width="320">
