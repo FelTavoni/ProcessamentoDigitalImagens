@@ -1,7 +1,6 @@
-# Trabalho 3 - <!--Título do Trabalho-->
+# Trabalho 3 - Cálculo da curvatura ao longo do contorno de objetos
 
-
-
+O trabalho 3 da disciplina de *Processamento Digital de Imagens* consiste em utilizar a fórmula da curvatura para calcular um valor referente a curvatura para cada ponto do contorno, identificando picos positivos e negativos de curvatura.
 
 ## Como executar
 
@@ -9,9 +8,7 @@
 
 A execução da localização de objetos deve seguir a seguinte forma:
 
-`python search_object.py <caminho-da-imagem> <caminho-do-objeto> <claro | escuro>`
-
-A tag claro ou escuro ajuda a obter uma melhor resposta, visto que pode haver confusão caso se escureça/clarifique demais a imagem.
+`---`
 
 - Via Jupyter Notebook
 
@@ -19,11 +16,11 @@ Também é possível rodas os scripts python pelo notebook python. Basta realiza
 
 `jupyter notebook`
 
-A seguir, adentre a pasta em que o arquivo `Localização de objeto com variação.ipynb` está localizado e execute as células do notebook.
+A seguir, adentre a pasta em que o arquivo `---.ipynb` está localizado e execute as células do notebook.
 
 ### Ferramentas Utilizadas
 
-    - [Python v3.9.5](https://www.python.org/)
+- [Python v3.9.5](https://www.python.org/)
     - [Numpy v1.20.0](https://numpy.org/)
     - [Matplotlib v3.4.2](https://matplotlib.org/)
     - [Jupyter Notebook](https://jupyter.org/index.html)
