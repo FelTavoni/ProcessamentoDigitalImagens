@@ -4,7 +4,6 @@ Seja bem vindo! Repositório referente à disciplina de Processamento Digital de
 
 ## Organização do Repositório
 
-```
 .
 ├── [T1](/T1)              -- Projeto 1
 ├── [T2](/T2)              -- Projeto 2
@@ -13,7 +12,6 @@ Seja bem vindo! Repositório referente à disciplina de Processamento Digital de
 ├── .gitignore
 ├── Dockerfile
 └── Readme.md
-```
 
 ## Autores
 
