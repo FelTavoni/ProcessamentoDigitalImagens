@@ -123,34 +123,49 @@ def get_next_point(img, curr_point, starting_index):
         else:
             curr_index = (curr_index+1)%8
 
-def curvatura(cont):
+def curvature(cont):
     '''
     Cálculo da curvatura ao longo do contorno de objetos.
     '''
-    x = y = k = []
-    # Separando os eixos x e y.
-    for p in cont:
-        x.append(p[0])
-        y.append(p[1])
+    
+    x = gaussian_suavization_1d(cont[:, 0], 6)
+    y = gaussian_suavization_1d(cont[:, 1], 6)
 
-    # Cálculando as derivadas (primeira e segunda ordem).
-    dx = np.diff(x)
-    dy = np.diff(y)
-    d2x = np.diff(x, 2)
-    d2y = np.diff(y, 2)
+    x_t = np.gradient(x)
+    y_t = np.gradient(y)
 
-    # Iniciando o cálculo da curvatura segundo a fórmula de ___ .
-    # Vale lembrar que a derivada 'encurta' os valores, já que cálcula a variação.
-    for t in range(len(d2x)):
-        if (((dx[t]**2)+(dy[t]**2))**(3/2)) == 0:
-            k[t] = 0
-        else:
-            k[t] = ((dx[t]*d2y[t])-(d2x[t]*dy[t]))/(((dx[t]**2)+(dy[t]**2))**(3/2))
+    xx_t = np.gradient(x_t)
+    yy_t = np.gradient(y_t)
 
-    t = range(0, len(d2x)+2)
+    curvature_val = xx_t * y_t - x_t * yy_t / (x_t * x_t + y_t * y_t)**1.5
 
-    plt.plot(t, k)
+    np.set_printoptions(threshold=sys.maxsize)
+    print(curvature_val)
+
+    t = range(0, len(curvature_val))
+    # curvature_val = curvature_val[5:-5]
+
+    plt.figure(figsize=[10,6])
+    plt.subplot(1, 2, 1)
+    plt.plot(t, curvature_val)
+    plt.title('Normal')
+    plt.subplot(1, 2, 2)
+    plt.plot(t, curvature_val)
+    plt.title('Suavizado')
+
     plt.show()
+
+def gaussian_suavization_1d(signal, filter_size):
+    sigma = filter_size/6.
+    x = np.linspace(-3*sigma, 3*sigma, filter_size)
+    y = np.exp(-x**2/(2*sigma**2))
+    
+    # Filtros de suavização precisam ter soma igual a 1
+    y = y/np.sum(y)
+
+    smoothed_signal = np.convolve(signal, y, 'same')
+
+    return smoothed_signal
 
 if __name__ == "__main__":
     # Lendo a imagem e a mostrando.
@@ -167,8 +182,8 @@ if __name__ == "__main__":
     print(np.unique(new_img))
 
     # Cálculando o contorno paramétrico da imagem.
-    img = (img > 0).astype(np.uint8)
-    cont = image_contour(img)
+    new_img = (new_img > 0).astype(np.uint8)
+    cont = image_contour(new_img)
     # Transforma o contorno em um array numpy
     cont = np.array(cont)
     plt.figure()
@@ -178,4 +193,4 @@ if __name__ == "__main__":
     plt.show()
 
     # Dado o contorno, cálcular a curvatura ao longo do contorno.
-    curvatura(cont)
+    curvature(cont)
