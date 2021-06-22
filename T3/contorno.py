@@ -125,32 +125,31 @@ def get_next_point(img, curr_point, starting_index):
 
 def curvature(cont):
     '''
-    Cálculo da curvatura ao longo do contorno de objetos.
+    Calculo da curvatura ao longo do contorno de objetos.
     '''
-    
+    # Suavizando o contorno segundo uma funcao gaussiana
     x = gaussian_suavization_1d(cont[:, 0], 6)
     y = gaussian_suavization_1d(cont[:, 1], 6)
 
-    x_t = np.gradient(x)
-    y_t = np.gradient(y)
+    # Calculo da primeira derivada no eixo x e y.
+    dx = np.gradient(x)
+    dy = np.gradient(y)
 
-    xx_t = np.gradient(x_t)
-    yy_t = np.gradient(y_t)
+    # Calculo da segunda derivada no eixo x e y.
+    ddx = np.gradient(dx)
+    ddy = np.gradient(dy)
 
-    curvature_val = xx_t * y_t - x_t * yy_t / (x_t * x_t + y_t * y_t)**1.5
+    # Por fim, o calculo da curvatura
+    curvature = ((dx * ddy) - (ddx * dy)) / ((dx**2 + dy**2)**1.5)
 
-    np.set_printoptions(threshold=sys.maxsize)
-    print(curvature_val)
-
-    t = range(0, len(curvature_val))
-    # curvature_val = curvature_val[5:-5]
+    t = range(0, len(curvature))
 
     plt.figure(figsize=[10,6])
     plt.subplot(1, 2, 1)
-    plt.plot(t, curvature_val)
+    plt.plot(t, curvature)
     plt.title('Normal')
     plt.subplot(1, 2, 2)
-    plt.plot(t, curvature_val)
+    plt.plot(t, curvature)
     plt.title('Suavizado')
 
     plt.show()
