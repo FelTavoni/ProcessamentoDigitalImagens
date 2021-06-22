@@ -127,6 +127,7 @@ def curvature(cont):
     '''
     Calculo da curvatura ao longo do contorno de objetos.
     '''
+    
     # Suavizando o contorno segundo uma funcao gaussiana
     x = gaussian_suavization_1d(cont[:, 0], 6)
     y = gaussian_suavization_1d(cont[:, 1], 6)
@@ -145,12 +146,8 @@ def curvature(cont):
     t = range(0, len(curvature))
 
     plt.figure(figsize=[10,6])
-    plt.subplot(1, 2, 1)
     plt.plot(t, curvature)
-    plt.title('Normal')
-    plt.subplot(1, 2, 2)
-    plt.plot(t, curvature)
-    plt.title('Suavizado')
+    plt.title('Curvatura')
 
     plt.show()
 
