@@ -4,7 +4,7 @@ O trabalho 3 da disciplina de *Processamento Digital de Imagens* consiste em uti
 
 <img src="images/Formula.png" alt="Fórmula geral da curvatura" style="width: 250px;">
 
-A partir do c ́alculo dessa curvatura, mencionado em [1], podemos determinar oquanto o ponto se curva diante de uma reta. Podemos ter valores positivos ou negativos à medida que se percorre a fronteira no sentido horário, no qual valores positivos indicam que o ponto faz parte de um segmento *convexo*, enquanto o oposto  indica *concavidade*. Isso permite uma análise do contorno, podendo estimar o grau do mesmo, categorizando-o, por exemplo, como um ponto de canto o um ponto pertencente a uma reta.
+A partir do cálculo dessa curvatura, podemos determinar o quanto o ponto se curva diante de uma reta. Podemos ter valores positivos ou negativos à medida que se percorre a fronteira no sentido horário, no qual valores positivos indicam que o ponto faz parte de um segmento *convexo*, enquanto o oposto  indica *concavidade*. Isso permite uma análise do contorno, podendo estimar o grau do mesmo, categorizando-o, por exemplo, como um ponto de canto o um ponto pertencente a uma reta.
 
 ## Como executar
 
@@ -13,7 +13,6 @@ A partir do c ́alculo dessa curvatura, mencionado em [1], podemos determinar oq
 A execução da localização de objetos deve seguir a seguinte forma:
 
 `python contorno.py <caminho-da-imagem>`
-
 
 ### Ferramentas Utilizadas
 
